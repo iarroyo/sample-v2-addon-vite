@@ -1,0 +1,1 @@
+<template>sample page</template>

@@ -5,8 +5,6 @@ import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';
 import { start as qunitStart, setupEmberOnerrorValidation } from 'ember-qunit';
-import ApplicationTemplate from './test-app/application.gts';
-import FooTemplate from './test-app/foo.gts';
 
 class Router extends EmberRouter {
   location = 'none';
@@ -17,15 +15,11 @@ class TestApp extends EmberApp {
   modulePrefix = 'test-app';
   Resolver = Resolver.withModules({
     'test-app/router': { default: Router },
-    'test-app/templates/application': { default: ApplicationTemplate },
-    'test-app/templates/foo': { default: FooTemplate },
     // add any custom services here
   });
 }
 
-Router.map(function () {
-  this.route('foo');
-});
+Router.map(function () {});
 
 export function start() {
   setApplication(

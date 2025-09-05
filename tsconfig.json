@@ -8,7 +8,12 @@
   "glint": {
     "environment": ["ember-loose", "ember-template-imports"]
   },
-  "include": ["src/**/*", "tests/**/*", "unpublished-development-types/**/*"],
+  "include": [
+    "src/**/*",
+    "tests/**/*",
+    "dummy-app/**/*",
+    "unpublished-development-types/**/*"
+  ],
   "compilerOptions": {
     "rootDir": ".",
     "types": ["ember-source/types", "vite/client", "@embroider/core/virtual"]

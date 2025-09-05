@@ -30,9 +30,7 @@
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.8.9",
-    "decorator-transforms": "^2.2.2",
-    "ember-primitives": "^0.40.0",
-    "ember-strict-application-resolver": "^0.1.0"
+    "decorator-transforms": "^2.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -58,8 +56,10 @@
     "@types/qunit": "^2.19.12",
     "babel-plugin-ember-template-compilation": "^2.2.5",
     "concurrently": "^9.0.1",
+    "ember-primitives": "^0.40.0",
     "ember-qunit": "^9.0.2",
     "ember-resolver": "^13.1.0",
+    "ember-route-template": "^1.0.3",
     "ember-source": "^6.3.0",
     "ember-template-lint": "^7.9.0",
     "eslint": "^9.17.0",
@@ -90,7 +90,8 @@
     }
   },
   "imports": {
-    "#src/*": "./src/*"
+    "#src/*": "./src/*",
+    "#dummyapp/*": "./dummy-app/*"
   },
   "exports": {
     ".": {
