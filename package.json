@@ -17,8 +17,7 @@
   "files": [
     "addon-main.cjs",
     "declarations",
-    "dist",
-    "public"
+    "dist"
   ],
   "scripts": {
     "build": "pnpm run tailwind:build && rollup --config",
@@ -102,7 +101,7 @@
       "./components/sample/index.js": "./dist/_app_/components/sample/index.js"
     },
     "public-assets": {
-      "./public/assets/tailwind.css": "/assets/tailwind.css"
+      "./src/public/assets/tailwind.css": "/@iarroyo/sample-v2-addon-vite/public/assets/tailwind.css"
     }
   },
   "imports": {

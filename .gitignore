@@ -17,4 +17,4 @@ node_modules/
 .prettiercache
 
 .npmrc
-/public/assets/tailwind.css
+/src/public/assets/tailwind.css
