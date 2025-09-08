@@ -5,6 +5,7 @@
  */
 module.exports = {
   plugins: [
+    '@embroider/addon-dev/template-colocation-plugin',
     [
       '@babel/plugin-transform-typescript',
       {

@@ -17,6 +17,7 @@ const isCompat = Boolean(process.env.ENABLE_COMPAT_BUILD);
 
 module.exports = {
   plugins: [
+    '@embroider/addon-dev/template-colocation-plugin',
     [
       '@babel/plugin-transform-typescript',
       {

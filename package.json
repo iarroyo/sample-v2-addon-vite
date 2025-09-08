@@ -86,7 +86,8 @@
     "type": "addon",
     "main": "addon-main.cjs",
     "app-js": {
-      "./components/rfsuite/sample/index.js": "./dist/_app_/components/rfsuite/sample/index.js"
+      "./components/foo.js": "./dist/_app_/components/foo.js",
+      "./components/sample/index.js": "./dist/_app_/components/sample/index.js"
     }
   },
   "imports": {
