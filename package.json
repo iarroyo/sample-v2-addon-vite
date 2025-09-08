@@ -1,17 +1,24 @@
 {
-  "name": "sample-v2-addon-vite",
+  "name": "@iarroyo/sample-v2-addon-vite",
   "version": "0.0.0",
   "description": "The default blueprint for Embroider v2 addons.",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iarroyo/sample-v2-addon-vite.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "license": "MIT",
   "author": "",
   "files": [
     "addon-main.cjs",
     "declarations",
-    "dist"
+    "dist",
+    "public"
   ],
   "scripts": {
     "build": "rollup --config",
