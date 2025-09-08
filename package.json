@@ -32,8 +32,8 @@
     "lint:js:fix": "eslint . --fix",
     "lint:types": "glint",
     "start": "vite dev",
-    "tailwind:build": "npx tailwindcss -i ./config/tailwind/tailwind-input.css -o ./public/assets/tailwind.css --postcss ./postcss.config.cjs -c ./config/tailwind/tailwind.config.cjs",
-    "tailwind:watch": "npx tailwindcss -i ./config/tailwind/tailwind-input.css -o ./public/assets/tailwind.css -c ./config/tailwind/tailwind.config.cjs --watch",
+    "tailwind:build": "npx tailwindcss -i ./config/tailwind/tailwind-input.css -o ./src/public/assets/tailwind.css --postcss ./postcss.config.cjs -c ./config/tailwind/tailwind.config.cjs",
+    "tailwind:watch": "npx tailwindcss -i ./config/tailwind/tailwind-input.css -o ./src/public/assets/tailwind.css -c ./config/tailwind/tailwind.config.cjs --watch",
     "test": "vite build --mode=development --out-dir dist-tests && testem --file testem.cjs ci --port 0",
     "prepack": "pnpm run tailwind:build && rollup --config"
   },
