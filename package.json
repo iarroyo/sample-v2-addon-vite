@@ -35,7 +35,7 @@
     "tailwind:build": "npx tailwindcss -i ./config/tailwind/tailwind-input.css -o ./public/assets/tailwind.css --postcss ./postcss.config.cjs -c ./config/tailwind/tailwind.config.cjs",
     "tailwind:watch": "npx tailwindcss -i ./config/tailwind/tailwind-input.css -o ./public/assets/tailwind.css -c ./config/tailwind/tailwind.config.cjs --watch",
     "test": "vite build --mode=development --out-dir dist-tests && testem --file testem.cjs ci --port 0",
-    "prepack": "rollup --config"
+    "prepack": "pnpm run tailwind:build && rollup --config"
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.8.9",
