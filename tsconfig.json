@@ -12,7 +12,8 @@
     "src/**/*",
     "tests/**/*",
     "dummy-app/**/*",
-    "unpublished-development-types/**/*"
+    "unpublished-development-types/**/*",
+    "public/**/*.ts"
   ],
   "compilerOptions": {
     "rootDir": ".",

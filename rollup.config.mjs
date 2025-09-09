@@ -1,4 +1,5 @@
 import { babel } from '@rollup/plugin-babel';
+import json from '@rollup/plugin-json';
 import { Addon } from '@embroider/addon-dev/rollup';
 import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
@@ -10,7 +11,7 @@ const addon = new Addon({
 
 const rootDirectory = dirname(fileURLToPath(import.meta.url));
 const babelConfig = resolve(rootDirectory, './babel.publish.config.cjs');
-const tsConfig = resolve(rootDirectory, './tsconfig.publish.json');
+//const tsConfig = resolve(rootDirectory, './tsconfig.publish.json');
 
 export default {
   // This provides defaults that work well alongside `publicEntrypoints` below.
@@ -85,5 +86,7 @@ export default {
 
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),
+
+    json(),
   ],
 };

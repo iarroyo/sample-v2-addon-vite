@@ -62,6 +62,7 @@
     "@glint/template": "^1.6.0-alpha.1",
     "@glint/tsserver-plugin": "^2.0.0-alpha.2",
     "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-json": "^6.1.0",
     "@types/qunit": "^2.19.12",
     "autoprefixer": "^10.4.21",
     "babel-plugin-ember-template-compilation": "^2.2.5",
