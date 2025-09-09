@@ -60,11 +60,24 @@ export default {
     // Ensure that .gjs files are properly integrated as Javascript
     addon.gjs(),
 
+    /*
+      Gts extensions are not kept on imports in declarations files, so imports like the following one
+      import {Foo} from 'components/foo.gts'
+      end up being rewritten as follows in the declaration files
+      import {Foo} from 'components/foo'
+      while the generated declaration file includes the extension
+      /components/foo.gts.d.ts
+
+      This issue seems to be fixed delaying the declaration so we have managed it in the package.json as postprocess script
+    */
+
     // Emit .d.ts declaration files
+    /*
     addon.declarations(
       'declarations',
       `npx glint --declaration --project ${tsConfig}`,
     ),
+    */
 
     // addons are allowed to contain imports of .css files, which we want rollup
     // to leave alone and keep in the published output.
