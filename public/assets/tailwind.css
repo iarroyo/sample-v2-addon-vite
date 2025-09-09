@@ -554,6 +554,11 @@ video {
   display: none;
 }
 
-.p-2 {
+#sample-v2-addon-vite .bg-lime-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 230 53 / var(--tw-bg-opacity, 1));
+}
+
+#sample-v2-addon-vite .p-2 {
   padding: 0.5rem;
 }
