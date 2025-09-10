@@ -6,9 +6,11 @@ import { RemoteData } from 'reactiveweb/remote-data';
 
 //const ENV = config as ENVIRONMENT;
 
+const RemoteAddonInfo = RemoteData<{ name: string }>;
+
 export const AddonInfo: TOC<{ Element: Element }> = <template>
   {{!-- {{ENV.APP.ADDON_NAME}} --}}
-  {{#let (RemoteData "/addon-info") as |request|}}
+  {{#let (RemoteAddonInfo "/addon-info") as |request|}}
     {{#if request.isLoading}}...loading
     {{else if request.value}}
       Addon Name:
