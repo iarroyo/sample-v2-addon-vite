@@ -21,7 +21,7 @@
     "public"
   ],
   "scripts": {
-    "build": "pnpm run tailwind:build && rollup --config",
+    "build": "rollup --config",
     "format": "prettier . --cache --write",
     "lint": "concurrently \":lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
     "lint:fix": "concurrently \":lint:*:fix\" --names \"fix:\" --prefixColors auto &&  run format",
@@ -31,11 +31,11 @@
     "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
     "lint:js:fix": "eslint . --fix",
     "lint:types": "glint",
-    "start": "pnpm build & vite dev",
-    "tailwind:build": "npx tailwindcss -i ./config/tailwind/tailwind-input.css -o ./public/assets/tailwind.css --postcss ./postcss.config.cjs -c ./config/tailwind/tailwind.config.cjs",
-    "tailwind:watch": "npx tailwindcss -i ./config/tailwind/tailwind-input.css -o ./public/assets/tailwind.css -c ./config/tailwind/tailwind.config.cjs --watch",
+    "demo:start": "pnpm run demo:tailwind:build & vite dev",
+    "demo:tailwind:build": "npx tailwindcss -i ./config/tailwind/tailwind-input.css -o ./public/assets/tailwind.css --postcss ./postcss.config.cjs -c ./config/tailwind/tailwind.config.cjs",
+    "demo:tailwind:watch": "npx tailwindcss -i ./config/tailwind/tailwind-input.css -o ./public/assets/tailwind.css -c ./config/tailwind/tailwind.config.cjs --watch",
     "test": "vite build --mode=development --out-dir dist-tests && testem --file testem.cjs ci --port 0",
-    "prepack": "pnpm run tailwind:build && rollup --config && npx glint --declaration --project \"./tsconfig.publish.json\""
+    "prepack": "rollup --config && npx glint --declaration --project \"./tsconfig.publish.json\""
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.8.9",
@@ -116,7 +116,7 @@
   },
   "imports": {
     "#src/*": "./src/*",
-    "#dummyapp/*": "./dummy-app/*"
+    "#demo-app/*": "./demo-app/*"
   },
   "exports": {
     ".": {

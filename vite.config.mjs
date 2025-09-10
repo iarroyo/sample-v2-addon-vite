@@ -10,7 +10,11 @@ export default defineConfig({
     alias: [
       {
         find: 'sample-v2-addon-vite',
-        replacement: `${__dirname}/dist`, //replacement: `${__dirname}/src`,
+        replacement: `${__dirname}/src`, //replacement: `${__dirname}/dist`, <- for hbs compnents
+      },
+      {
+        find: 'demo-app',
+        replacement: `${__dirname}/demo-app`,
       },
     ],
   },

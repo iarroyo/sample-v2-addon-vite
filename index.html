@@ -8,11 +8,12 @@
 
     <script src="https://requirejs.org/docs/release/2.3.7/minified/require.js"></script>
     <link rel="stylesheet" href="/assets/tailwind.css" type="text/css"/>
+    <link rel="stylesheet" href="/styles/addon.css" type="text/css"/>
   </head>
   <body id="rfsg-ember-components">
     <script type="module">
-      import Application from "#dummyapp/app";
-      import environment from "#dummyapp/config";
+      import Application from "demo-app/app";
+      import environment from "demo-app/config";
 
       Application.create(environment.APP);
     </script>

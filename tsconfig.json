@@ -16,7 +16,12 @@
     "public/**/*.ts"
   ],
   "compilerOptions": {
+    "baseUrl": "./",
     "rootDir": ".",
-    "types": ["ember-source/types", "vite/client", "@embroider/core/virtual"]
+    "types": ["ember-source/types", "vite/client", "@embroider/core/virtual"],
+    "paths": {
+      "sample-v2-addon-vite/*": ["sample-v2-addon-vite/*"],
+      "demo-app/*": ["demo-app/*"]
+    }
   }
 }
