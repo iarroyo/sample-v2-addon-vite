@@ -3,12 +3,14 @@ import DummyFoo from '#dummyapp/components/foo';
 import AddonFoo from '#src/components/foo';
 //import AddonSample from '#src/components/sample';  //does NOT work
 //import AddonSample from '/dist/components/sample'; //works
-import { Sample as AddonSample } from 'sample-v2-addon-vite';
+import { Sample as AddonSample } from 'sample-v2-addon-vite/components/sample';
 //import DummySample from '#dummyapp/components/sample';
 
 export default Route(
   <template>
-    {{@model}}
+    <p>
+      {{@model}}
+    </p>
     <DummyFoo />
     <AddonFoo />
     <AddonSample />
