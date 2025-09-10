@@ -3,6 +3,10 @@ import json from '@rollup/plugin-json';
 import { Addon } from '@embroider/addon-dev/rollup';
 import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
+import { defineConfig } from 'rollup';
+import rollupTypescript from '@rollup/plugin-typescript';
+import rollupResolve from '@rollup/plugin-node-resolve';
+import rollupCommonjs from '@rollup/plugin-commonjs';
 
 const addon = new Addon({
   srcDir: 'src',
@@ -12,56 +16,58 @@ const addon = new Addon({
 const rootDirectory = dirname(fileURLToPath(import.meta.url));
 const babelConfig = resolve(rootDirectory, './babel.publish.config.cjs');
 //const tsConfig = resolve(rootDirectory, './tsconfig.publish.json');
+const tsPublicConfig = resolve(rootDirectory, './tsconfig.publish.public.json');
 
-export default {
-  // This provides defaults that work well alongside `publicEntrypoints` below.
-  // You can augment this if you need to.
-  output: addon.output(),
+export default defineConfig([
+  {
+    // This provides defaults that work well alongside `publicEntrypoints` below.
+    // You can augment this if you need to.
+    output: addon.output(),
 
-  plugins: [
-    // These are the modules that users should be able to import from your
-    // addon. Anything not listed here may get optimized away.
-    // By default all your JavaScript modules (**/*.js) will be importable.
-    // But you are encouraged to tweak this to only cover the modules that make
-    // up your addon's public API. Also make sure your package.json#exports
-    // is aligned to the config here.
-    // See https://github.com/embroider-build/embroider/blob/main/docs/v2-faq.md#how-can-i-define-the-public-exports-of-my-addon
-    addon.publicEntrypoints(['**/*.js', 'index.js', 'template-registry.js']),
+    plugins: [
+      // These are the modules that users should be able to import from your
+      // addon. Anything not listed here may get optimized away.
+      // By default all your JavaScript modules (**/*.js) will be importable.
+      // But you are encouraged to tweak this to only cover the modules that make
+      // up your addon's public API. Also make sure your package.json#exports
+      // is aligned to the config here.
+      // See https://github.com/embroider-build/embroider/blob/main/docs/v2-faq.md#how-can-i-define-the-public-exports-of-my-addon
+      addon.publicEntrypoints(['**/*.js', 'index.js', 'template-registry.js']),
 
-    // These are the modules that should get reexported into the traditional
-    // "app" tree. Things in here should also be in publicEntrypoints above, but
-    // not everything in publicEntrypoints necessarily needs to go here.
-    addon.appReexports([
-      'components/**/*.js',
-      'helpers/**/*.js',
-      'modifiers/**/*.js',
-      'services/**/*.js',
-    ]),
+      // These are the modules that should get reexported into the traditional
+      // "app" tree. Things in here should also be in publicEntrypoints above, but
+      // not everything in publicEntrypoints necessarily needs to go here.
+      addon.appReexports([
+        'components/**/*.js',
+        'helpers/**/*.js',
+        'modifiers/**/*.js',
+        'services/**/*.js',
+      ]),
 
-    // Follow the V2 Addon rules about dependencies. Your code can import from
-    // `dependencies` and `peerDependencies` as well as standard Ember-provided
-    // package names.
-    addon.dependencies(),
+      // Follow the V2 Addon rules about dependencies. Your code can import from
+      // `dependencies` and `peerDependencies` as well as standard Ember-provided
+      // package names.
+      addon.dependencies(),
 
-    // This babel config should *not* apply presets or compile away ES modules.
-    // It exists only to provide development niceties for you, like automatic
-    // template colocation.
-    //
-    // By default, this will load the actual babel config from the file
-    // babel.config.json.
-    babel({
-      extensions: ['.js', '.gjs', '.ts', '.gts'],
-      babelHelpers: 'bundled',
-      configFile: babelConfig,
-    }),
+      // This babel config should *not* apply presets or compile away ES modules.
+      // It exists only to provide development niceties for you, like automatic
+      // template colocation.
+      //
+      // By default, this will load the actual babel config from the file
+      // babel.config.json.
+      babel({
+        extensions: ['.js', '.gjs', '.ts', '.gts', 'cjs'],
+        babelHelpers: 'bundled',
+        configFile: babelConfig,
+      }),
 
-    // Ensure that standalone .hbs files are properly integrated as Javascript.
-    addon.hbs(),
+      // Ensure that standalone .hbs files are properly integrated as Javascript.
+      addon.hbs(),
 
-    // Ensure that .gjs files are properly integrated as Javascript
-    addon.gjs(),
+      // Ensure that .gjs files are properly integrated as Javascript
+      addon.gjs(),
 
-    /*
+      /*
       Gts extensions are not kept on imports in declarations files, so imports like the following one
       import {Foo} from 'components/foo.gts'
       end up being rewritten as follows in the declaration files
@@ -72,21 +78,38 @@ export default {
       This issue seems to be fixed delaying the declaration so we have managed it in the package.json as postprocess script
     */
 
-    // Emit .d.ts declaration files
-    /*
+      // Emit .d.ts declaration files
+      /*
     addon.declarations(
       'declarations',
       `npx glint --declaration --project ${tsConfig}`,
     ),
     */
 
-    // addons are allowed to contain imports of .css files, which we want rollup
-    // to leave alone and keep in the published output.
-    addon.keepAssets(['**/*.css']),
+      // addons are allowed to contain imports of .css files, which we want rollup
+      // to leave alone and keep in the published output.
+      addon.keepAssets(['**/*.css']),
 
-    // Remove leftover build artifacts when starting a new build.
-    addon.clean(),
+      // Remove leftover build artifacts when starting a new build.
+      addon.clean(),
 
-    json(),
-  ],
-};
+      json(),
+    ],
+  },
+  {
+    input: 'public/environment.ts',
+    output: {
+      file: 'dist/environment.cjs',
+      format: 'cjs',
+      exports: 'auto',
+    },
+    plugins: [
+      rollupResolve(),
+      rollupCommonjs(),
+      rollupTypescript({
+        tsconfig: tsPublicConfig,
+      }),
+      json(),
+    ],
+  },
+]);
