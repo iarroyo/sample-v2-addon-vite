@@ -16,7 +16,10 @@ const addon = new Addon({
 const rootDirectory = dirname(fileURLToPath(import.meta.url));
 const babelConfig = resolve(rootDirectory, './babel.publish.config.cjs');
 //const tsConfig = resolve(rootDirectory, './tsconfig.publish.json');
-const tsPublicConfig = resolve(rootDirectory, './tsconfig.publish.public.json');
+const tsEnvironmentConfig = resolve(
+  rootDirectory,
+  './tsconfig.publish.environment.json',
+);
 
 export default defineConfig([
   {
@@ -97,9 +100,9 @@ export default defineConfig([
     ],
   },
   {
-    input: 'public/environment.ts',
+    input: 'src/environment.ts',
     output: {
-      file: 'dist/environment.cjs',
+      file: 'dist/environment.js',
       format: 'cjs',
       exports: 'auto',
     },
@@ -107,7 +110,7 @@ export default defineConfig([
       rollupResolve(),
       rollupCommonjs(),
       rollupTypescript({
-        tsconfig: tsPublicConfig,
+        tsconfig: tsEnvironmentConfig,
       }),
       json(),
     ],

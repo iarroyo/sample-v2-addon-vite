@@ -5,7 +5,7 @@
  */
 {
   "extends": "@ember/library-tsconfig",
-  "include": ["./public/**/*"],
+  "include": ["./src/environment.ts"],
   "compilerOptions": {
     "allowJs": true,
     "outDir": "./dist",
@@ -20,6 +20,6 @@
       This way, we can have simpler `package.json#exports` that matches
       imports to files on disk
     */
-    "rootDir": "./public"
+    "rootDir": "./src"
   }
 }
