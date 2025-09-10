@@ -1,10 +1,19 @@
 import type { TOC } from '@ember/component/template-only';
-import config from 'ember-get-config';
-import type { ENVIRONMENT } from '#src/environment.ts';
+//import config from 'ember-get-config';
+//import type { ENVIRONMENT } from '#src/environment.ts';
 
-const ENV = config as ENVIRONMENT;
+import { RemoteData } from 'reactiveweb/remote-data';
+
+//const ENV = config as ENVIRONMENT;
 
 export const AddonInfo: TOC<{ Element: Element }> = <template>
-  Addon Name {{ENV.APP.ADDON_NAME}}
+  {{!-- {{ENV.APP.ADDON_NAME}} --}}
+  {{#let (RemoteData "/addon-info") as |request|}}
+    {{#if request.isLoading}}...loading
+    {{else if request.value}}
+      Addon Name:
+      {{request.value.name}}
+    {{/if}}
+  {{/let}}
 </template>;
 export default AddonInfo;
