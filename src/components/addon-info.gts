@@ -1,7 +1,10 @@
 import type { TOC } from '@ember/component/template-only';
-import ENVIRONMENT from '#src/environment.ts';
+import config from 'ember-get-config';
+import type { ENVIRONMENT } from '#src/environment.ts';
+
+const ENV = config as ENVIRONMENT;
 
 export const AddonInfo: TOC<{ Element: Element }> = <template>
-  Addon Name {{ENVIRONMENT.APP.ADDON_NAME}}
+  Addon Name {{ENV.APP.ADDON_NAME}}
 </template>;
 export default AddonInfo;

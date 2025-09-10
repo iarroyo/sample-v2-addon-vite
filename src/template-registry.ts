@@ -4,8 +4,10 @@
 
 import type { Foo } from './components/foo.gts';
 import type { Sample } from './components/sample';
+import type { AddonInfo } from './components/addon-info.gts';
 
 export default interface Registry {
   Sample: typeof Sample;
   Foo: typeof Foo;
+  AddonInfo: typeof AddonInfo;
 }

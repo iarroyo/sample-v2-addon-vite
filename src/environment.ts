@@ -6,4 +6,6 @@ export const ENVIRONMENT = {
   },
 } as const;
 
+export type ENVIRONMENT = typeof ENVIRONMENT;
+
 export default ENVIRONMENT;
