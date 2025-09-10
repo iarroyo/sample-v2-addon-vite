@@ -110,7 +110,6 @@
       "./components/sample/index.js": "./dist/_app_/components/sample/index.js"
     },
     "public-assets": {
-      "./public/assets/tailwind.css": "/@iarroyo/sample-v2-addon-vite/public/assets/tailwind.css",
       "./public/mockServiceWorker.js": "/mockServiceWorker.js"
     }
   },
