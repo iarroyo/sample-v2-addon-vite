@@ -14,9 +14,6 @@ importers:
       decorator-transforms:
         specifier: ^2.2.2
         version: 2.3.0(@babel/core@7.28.0)
-      ember-intl:
-        specifier: 6.5.5
-        version: 6.5.5(@glint/template@1.6.0-alpha.2)(typescript@5.8.3)(webpack@5.101.0)
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -105,6 +102,9 @@ importers:
       ember-get-config:
         specifier: ^2.1.1
         version: 2.1.1(@glint/template@1.6.0-alpha.2)
+      ember-intl:
+        specifier: 6.5.5
+        version: 6.5.5(@glint/template@1.6.0-alpha.2)(typescript@5.8.3)(webpack@5.101.0)
       ember-primitives:
         specifier: ^0.40.0
         version: 0.40.0(@babel/core@7.28.0)(@ember/test-helpers@5.2.2(@babel/core@7.28.0)(@glint/template@1.6.0-alpha.2))(@ember/test-waiters@4.1.1(@glint/template@1.6.0-alpha.2))(@glimmer/component@2.0.0)(@glint/template@1.6.0-alpha.2)(ember-modifier@4.2.2(@babel/core@7.28.0))(ember-resources@7.0.7(@glimmer/component@2.0.0)(@glint/template@1.6.0-alpha.2))(ember-source@6.6.0(@glimmer/component@2.0.0)(rsvp@4.8.5))

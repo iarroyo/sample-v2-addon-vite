@@ -40,8 +40,7 @@
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.8.9",
-    "decorator-transforms": "^2.2.2",
-    "ember-intl": "6.5.5"
+    "decorator-transforms": "^2.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -73,6 +72,7 @@
     "babel-plugin-ember-template-compilation": "^2.2.5",
     "concurrently": "^9.0.1",
     "ember-get-config": "^2.1.1",
+    "ember-intl": "6.5.5",
     "ember-primitives": "^0.40.0",
     "ember-qunit": "^9.0.2",
     "ember-resolver": "^13.1.0",
