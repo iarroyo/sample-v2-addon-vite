@@ -18,7 +18,8 @@
     "addon-main.cjs",
     "declarations",
     "dist",
-    "public"
+    "public",
+    "translations"
   ],
   "scripts": {
     "build": "rollup --config",
@@ -39,7 +40,8 @@
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.8.9",
-    "decorator-transforms": "^2.2.2"
+    "decorator-transforms": "^2.2.2",
+    "ember-intl": "6.5.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
