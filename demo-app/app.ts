@@ -5,8 +5,8 @@ import config from './config.ts';
 import * as Router from './router.ts';
 import * as ApplicationRoute from './routes/application.ts';
 import * as PageRoute from './routes/page.ts';
-import * as ApplicationTemplate from './templates/application.gts';
-import * as PageTemplate from './templates/page.gts';
+import * as ApplicationTemplate from 'demo-app/templates/application.gts';
+import * as PageTemplate from 'demo-app/templates/page.gts';
 
 export default class App extends Application {
   modulePrefix = config.modulePrefix;

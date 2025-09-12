@@ -9,3 +9,10 @@ export const ENVIRONMENT = {
 export type ENVIRONMENT = typeof ENVIRONMENT;
 
 export default ENVIRONMENT;
+
+// DO NOT DELETE: this is how TypeScript knows how to look up your services.
+declare module '@ember/service' {
+  interface Registry {
+    'config:environment': ENVIRONMENT;
+  }
+}

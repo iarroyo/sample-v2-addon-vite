@@ -11,7 +11,7 @@
   "include": [
     "src/**/*",
     "tests/**/*",
-    "dummy-app/**/*",
+    "demo-app/**/*",
     "unpublished-development-types/**/*",
     "public/**/*.ts"
   ],
@@ -20,7 +20,9 @@
     "rootDir": ".",
     "types": ["ember-source/types", "vite/client", "@embroider/core/virtual"],
     "paths": {
-      "sample-v2-addon-vite/*": ["sample-v2-addon-vite/*"],
+      "sample-v2-addon-vite": ["dist"],
+      "sample-v2-addon-vite/*": ["dist/*"],
+      "demo-app": ["demo-app"],
       "demo-app/*": ["demo-app/*"]
     }
   }

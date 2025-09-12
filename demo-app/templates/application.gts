@@ -6,9 +6,10 @@ import AddonFoo from 'sample-v2-addon-vite/components/foo';
 //import { Sample as AddonSample } from 'sample-v2-addon-vite/components/sample';
 import AddonInfo from 'sample-v2-addon-vite/components/addon-info';
 import DemoBar from 'demo-app/components/bar';
+import type { SafeString } from '@ember/template';
 //import DummySample from 'demo-app/components/sample';
 
-export default Route(
+export default Route<{ model: SafeString }>(
   <template>
     <p>
       {{@model}}
@@ -16,9 +17,9 @@ export default Route(
     <DemoFoo />
     <DemoBar />
     <AddonFoo />
-    <!-- <AddonSample /> -->
+    {{! <AddonSample /> }}
     <AddonInfo />
-    <!-- <DummySample /> -->
+    {{! <DummySample /> }}
     <p>
       {{outlet}}
     </p>

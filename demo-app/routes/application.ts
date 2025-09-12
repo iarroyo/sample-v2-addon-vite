@@ -20,7 +20,7 @@ export default class ApplicationRoute extends Route {
 }
 
 async function setupMSW(context: ApplicationRoute) {
-  const { worker } = await import('sample-v2-addon-vite/mocks/browser.js');
+  const { worker } = await import('sample-v2-addon-vite/mocks/browser');
 
   await worker.start();
 
